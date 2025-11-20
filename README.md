@@ -2,8 +2,6 @@
 
 Simula um sistema simples de livraria no terminal usando Java.
 
-[![Stars](https://img.shields.io/github/stars/Nicolas-End/Livraria-Simples?style=social)](https://github.com/Nicolas-End/Livraria-Simples)\
-[![Forks](https://img.shields.io/github/forks/Nicolas-End/Livraria-Simples?style=social)](https://github.com/Nicolas-End/Livraria-Simples)
 
 ## Table of Contents
 
