@@ -6,8 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="b2e0f5e4-38f6-4ba1-82cf-52119e66163d" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Library/LibraryProcesses.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Library/LibraryProcesses.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Library/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Library/User.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -19,6 +17,7 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Class" />
+        <option value="SimpleSourceFile" />
       </list>
     </option>
   </component>

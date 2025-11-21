@@ -178,7 +178,7 @@ void borrowOptions(List<Book> books, List<User> users, int userIntInput, Scanner
                 System.out.println("Digite qual livro deseja devolver: ");
                 bookPosition = sc.nextInt();
 
-                new LibraryProcesses(users.get(userPosition-1),users.get(userPosition-1).getBorrowedBooks().get(bookPosition-1));
+                new LibraryProcesses(users.get(userPosition-1),books.get(bookPosition-1)).removeBorrowBook();
                 System.out.println("Digite q para sair: ");
                 sc.next();
                 break;
