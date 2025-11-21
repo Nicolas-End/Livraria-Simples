@@ -9,6 +9,7 @@ public class Book {
 
     public Book(String bookTitle, String bookAuthor){
         Random rand = new Random();
+        this.id = rand.nextInt(100);;
         this.title = bookTitle;
         this.author = bookAuthor;
         this.available = true;
@@ -34,4 +35,9 @@ public class Book {
     public boolean getAvailable(){
         return  this.available;
     }
+
+    public int getId() {
+        return id;
+    }
+
 }
