@@ -5,7 +5,7 @@ import java.util.Random;
 public class User {
     private String name;
     private int id;
-    private ArrayList<Book> borrowedBooks;
+    private ArrayList<Book> borrowedBooks = new ArrayList<>();
 
     public User(String userName){
         Random rand = new Random();

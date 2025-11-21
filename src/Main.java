@@ -3,7 +3,7 @@ void main() {
     Scanner sc = new Scanner(System.in);
     List<User> users = new ArrayList<>();
     List<Book> books = new ArrayList<>();
-    LibraryProcesses libraryProcesses;
+
     int userIntInput = 0;
     String userStringInput = "";
 
@@ -27,13 +27,14 @@ void main() {
                 break;
 
             case 3:
-                System.out.println("Emprestar ou Devolver");
+                borrowOptions(books,users,userIntInput,sc);
                 break;
             default:
                 System.out.println("Saindo...");
         }
     }
 }
+
 
 
 void userOptions(List<User> users, int userIntInput, String userStringInput, Scanner sc){
@@ -72,7 +73,7 @@ void userOptions(List<User> users, int userIntInput, String userStringInput, Sca
 
                 System.out.printf("\nId do usuário: %d\n", u.getId());
                 System.out.printf("Nome do usuário: %s\n", u.getName());
-
+                System.out.print("livros Emprestado \n");
                 showBorrowedBooks(users, userIntInput);
                 break;
             case 5:
@@ -95,7 +96,7 @@ void booksOptions(List<Book> books, int userIntInput, String userStringInput, Sc
 
         switch (userIntInput){
             case 1:
-                showAvaibleBooks(books);
+                showBooks(books);
                 System.out.print("\nDigite qualquer tecla: ");
                 sc.next();
                 break;
@@ -107,13 +108,13 @@ void booksOptions(List<Book> books, int userIntInput, String userStringInput, Sc
                 books.add(new Book(title,author));
                 break;
             case 3:
-                showAvaibleBooks(books);
+                showBooks(books);
                 System.out.print("Digite o numero que deseja excluir: ");
                 userIntInput = sc.nextInt();
                 books.remove(books.get(userIntInput - 1));
                 break;
             case 4:
-                showAvaibleBooks(books);
+                showBooks(books);
 
                 System.out.print("Digite o numero que deseja ver os dados detalhadamente: ");
                 userIntInput = sc.nextInt();
@@ -140,7 +141,60 @@ void booksOptions(List<Book> books, int userIntInput, String userStringInput, Sc
     }
 }
 
-void showAvaibleBooks(List<Book> books){
+void borrowOptions(List<Book> books, List<User> users, int userIntInput, Scanner sc){
+    userIntInput = 0;
+    int userPosition;
+    int bookPosition;
+
+    while(userIntInput != 3) {
+        System.out.println("Opções disponiveis: \n 1-Emprestar Livro\n 2-Devolver Livro\n 3-Voltar");
+        System.out.print("Digite qual opção deseja: ");
+        userIntInput = sc.nextInt();
+        switch (userIntInput){
+            case 1:
+
+                showListUser(users);
+                System.out.print("\nDigite qual usuario deseja emprestar o livro: ");
+                userPosition = sc.nextInt();
+                System.out.println("\n");
+
+                showAvaliblesBooks(books);
+                System.out.print("Digite qual livro deseja emprestar: ");
+                bookPosition = sc.nextInt();
+
+                new LibraryProcesses(users.get(userPosition-1),books.get(bookPosition-1)).addBorrowBook();
+
+                System.out.println("Digite q para sair: ");
+                sc.next();
+
+                break;
+            case 2:
+                showListUser(users);
+                System.out.print("\nDigite qual usuario deseja devolver o livro: ");
+                userPosition = sc.nextInt();
+                System.out.println("\n");
+
+                showBorrowedBooks(users,userPosition);
+                System.out.println("Digite qual livro deseja devolver: ");
+                bookPosition = sc.nextInt();
+
+                new LibraryProcesses(users.get(userPosition-1),users.get(userPosition-1).getBorrowedBooks().get(bookPosition-1));
+                System.out.println("Digite q para sair: ");
+                sc.next();
+                break;
+
+            case 3:
+                System.out.println("Voltando ..");
+                break;
+            default:
+                System.out.println("Valor Invalido");
+        }
+    }
+}
+
+
+
+void showBooks(List<Book> books){
     for (int i = 0; i < books.size(); i++){
         System.out.print(i+1);
         System.out.print(" - ");
@@ -148,8 +202,16 @@ void showAvaibleBooks(List<Book> books){
         System.out.println();
     }
 }
-
-
+void showAvaliblesBooks(List<Book> books){
+    for (int i = 0; i < books.size(); i++){
+        if(books.get(i).getAvailable()) {
+            System.out.print(i + 1);
+            System.out.print(" - ");
+            System.out.print(books.get(i).getTitle());
+            System.out.println();
+        }
+    }
+}
 // mostra os usuario cadastrado e registrado na lista
 void showListUser(List<User> users){
     for (int i = 0; i < users.size(); i++){
